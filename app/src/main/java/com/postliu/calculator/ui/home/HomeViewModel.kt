@@ -1,4 +1,4 @@
-package com.postliu.calculator
+package com.postliu.calculator.ui.home
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
