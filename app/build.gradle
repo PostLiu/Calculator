@@ -49,6 +49,7 @@ android {
 }
 
 dependencies {
+    implementation 'io.apisense:rhino-android:1.1.1'
     def accompanist_version = "0.26.0-alpha"
     implementation "io.coil-kt:coil-compose:2.1.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"

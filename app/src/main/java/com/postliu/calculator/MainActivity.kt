@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.SideEffect
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.postliu.calculator.ui.home.HomeScreen
+import com.postliu.calculator.ui.home.MainViewModel
 import com.postliu.calculator.ui.theme.CalculatorTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +25,10 @@ class MainActivity : ComponentActivity() {
                 SideEffect {
                     systemUiController.setStatusBarColor(statusBarColor)
                 }
-                HomeScreen()
+                val viewModel: MainViewModel = hiltViewModel()
+                val orientation = viewModel.viewState.orientation
+                requestedOrientation = orientation
+                HomeScreen(viewModel = viewModel)
             }
         }
     }

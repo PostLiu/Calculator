@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">计算器</string>
+    <string name="orientation_str">&#xe664;</string>
 </resources>
