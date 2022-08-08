@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import com.postliu.calculator.model.KeyEvent
 import com.postliu.calculator.model.decodedKeyName
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.math.BigDecimal
 import javax.inject.Inject
 import javax.script.ScriptEngineManager
 
@@ -62,9 +63,10 @@ class MainViewModel @Inject constructor() : ViewModel() {
             if (input.contains('÷')) {
                 input = input.replace('÷', '/')
             }
+            Log.i(TAG, "equalsResult: $input")
             val engine = ScriptEngineManager().getEngineByName("rhino")
             val eval = engine.eval(input).toString()
-            eval.toBigDecimal().setScale(2).toString()
+            eval.toBigDecimal().setScale(2, BigDecimal.ROUND_HALF_UP).toString()
         }.onFailure {
             Log.e(TAG, "equalsResult: $it")
         }.onSuccess {
